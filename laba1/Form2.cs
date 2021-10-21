@@ -18,78 +18,94 @@ namespace laba1
             groupBox.Dock = DockStyle.Fill;
             groupBox.Text = $"{secondName} {name} {number_class}";
 
+            var panel = new Panel();
+            panel.Dock = DockStyle.Fill;
+            panel.AutoScroll = true; 
+            groupBox.Controls.Add(panel);
             //столбцы и строчки 
-            var column = new TableLayoutPanel();
-            column.Dock = DockStyle.Fill;
-            column.ColumnCount = 2;
-            column.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33));
-            column.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66));
-            column.RowCount = ((int)count) + 1;
-            column.AutoScroll = true;
-            
-            
-            groupBox.Controls.Add(column);
+            //var column = new TableLayoutPanel();
+            //column.Dock = DockStyle.Fill;
+            //column.ColumnCount = 2;
+            //column.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+            //column.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+            //column.RowCount = ((int)count) + 1;
 
-            for (int r = 0; r < column.RowCount - 1; ++r)
+
+            var click = new Button();
+            click.Text = "Ответить";
+            var Final = new SplitContainer();
+            Final.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            Final.Dock = DockStyle.Top;
+            Final.Panel1.Controls.Add(click);
+            click.Click += new EventHandler(onSubmitClick);
+            panel.Controls.Add(Final);
+
+
+
+
+
+            for (int i = 0; i < count; i++)
             {
-                var radio = new TableLayoutPanel();
-                radio.Dock = DockStyle.Top;
-                radio.ColumnCount = 2;
-                radio.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-                radio.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-                //radio.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-                var task = new Label();
-                task.Dock = DockStyle.Top;
+                var splitcont = new SplitContainer();
+                splitcont.Orientation = System.Windows.Forms.Orientation.Horizontal;
+                splitcont.Dock = DockStyle.Top;
+
+                var column = new TableLayoutPanel();
+                column.Dock = DockStyle.Fill;
+                column.ColumnCount = 2;
+                column.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+                column.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
+
+                var text = new Label();
                 if (simple)
                 {
-                    task.Text = $"Изи #{r + 1}";
+                    text.Text = $"____________________ Изи {count - i}____________________";
                 }
                 else
                 {
-                    task.Text = $"Хард #{r + 1}";
+                    text.Text = $"____________________ Хард {count - i}____________________";
                 }
-
-
-                column.Controls.Add(task, 0, r);
+                text.AutoSize = false;
+                text.Dock = DockStyle.Fill;
+                text.TextAlign = ContentAlignment.MiddleCenter;
 
                 var answer1 = new RadioButton();
-                answer1.Dock = DockStyle.Top;
+                answer1.Dock = DockStyle.Left;
                 if (!simple)
                 {
-                    answer1.Text = "этот";
+                    answer1.Text = "хард_1";
                 }
                 else
                 {
-                    answer1.Text = "этот";
+                    answer1.Text = "изи_1";
                 }
 
                 var answer2 = new RadioButton();
-                answer2.Dock = DockStyle.Top;
+                answer1.Dock = DockStyle.Right;
                 if (!simple)
                 {
-                    answer2.Text = "или этот";
+                    answer2.Text = "хард_2";
                 }
                 else
                 {
-                    answer2.Text = "не этот";
+                    answer2.Text = "изи_2";
                 }
 
 
-                radio.Controls.Add(answer1, 0, 0);
-                radio.Controls.Add(answer2, 1, 0);
-                column.Controls.Add(radio, 1, r);
-
+                splitcont.Panel1.Controls.Add(text);
+                splitcont.Panel2.Controls.Add(column);
+                column.Controls.Add(answer1, 0, 0);
+                column.Controls.Add(answer2, 1, 0);
+                panel.Controls.Add(splitcont);
             }
-            var mainAnswer = new Button();
-            mainAnswer.Text = "тыкать";
-            mainAnswer.Dock = DockStyle.Top;
-            mainAnswer.Click += new EventHandler(onSubmitClick);
-            column.Controls.Add(mainAnswer, 0, column.RowCount);
+            
             this.Controls.Add(groupBox);
         }
+
+        
         private void onSubmitClick(object sender, EventArgs e)
         {
-            MessageBox.Show("тыкнута тыкалка");
+            MessageBox.Show("оп оп первая лаба готова");
         }
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
@@ -100,6 +116,13 @@ namespace laba1
 
         }
 
-       
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+        }
     }
 }

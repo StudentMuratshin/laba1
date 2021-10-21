@@ -68,6 +68,10 @@ namespace laba1
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.tableLayoutPanel1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(606, 523);
             this.splitContainer1.SplitterDistance = 407;
             this.splitContainer1.TabIndex = 0;
