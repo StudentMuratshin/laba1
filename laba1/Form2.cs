@@ -22,13 +22,7 @@ namespace laba1
             panel.Dock = DockStyle.Fill;
             panel.AutoScroll = true; 
             groupBox.Controls.Add(panel);
-            //столбцы и строчки 
-            //var column = new TableLayoutPanel();
-            //column.Dock = DockStyle.Fill;
-            //column.ColumnCount = 2;
-            //column.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-            //column.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50));
-            //column.RowCount = ((int)count) + 1;
+            
 
 
             var click = new Button();
@@ -69,33 +63,41 @@ namespace laba1
                 text.Dock = DockStyle.Fill;
                 text.TextAlign = ContentAlignment.MiddleCenter;
 
-                var answer1 = new RadioButton();
-                answer1.Dock = DockStyle.Left;
+                
                 if (!simple)
                 {
-                    answer1.Text = "хард_1";
+                    var answer1 = new TextBox();
+                    answer1.Dock = DockStyle.Right;
+                    answer1.Text = "Ответ";
+                    column.Controls.Add(answer1, 0, 0);
                 }
                 else
                 {
+                    var answer1 = new RadioButton();
+                    answer1.Dock = DockStyle.Right;
                     answer1.Text = "изи_1";
+                    column.Controls.Add(answer1, 0, 0);
                 }
 
-                var answer2 = new RadioButton();
-                answer1.Dock = DockStyle.Right;
                 if (!simple)
                 {
-                    answer2.Text = "хард_2";
+                    var answer2 = new TextBox();
+                    answer2.Dock = DockStyle.Left;
+                    answer2.Text = "Овет";
+                    column.Controls.Add(answer2, 1, 0);
                 }
                 else
-                {
+                {   
+                    var answer2 = new RadioButton();
+                    answer2.Dock = DockStyle.Left;
                     answer2.Text = "изи_2";
+                    column.Controls.Add(answer2, 1, 0);
                 }
 
 
                 splitcont.Panel1.Controls.Add(text);
                 splitcont.Panel2.Controls.Add(column);
-                column.Controls.Add(answer1, 0, 0);
-                column.Controls.Add(answer2, 1, 0);
+                
                 panel.Controls.Add(splitcont);
             }
             

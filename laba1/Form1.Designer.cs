@@ -273,6 +273,7 @@ namespace laba1
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(291, 27);
             this.textBox3.TabIndex = 6;
+            this.textBox3.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
             // comboBox1
             // 
